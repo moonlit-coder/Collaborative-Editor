@@ -1,4 +1,4 @@
-const dotEnv = require('dotenv');
+const dotEnv = require('dot-env');
 dotEnv.config();
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URL)
