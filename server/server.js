@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 const io = require('socket.io')(3001,{
     cors:{
-        origin: 'http://localhost:3000',
+        origin: 'https://editor-reiine.netlify.app',
         methods: ['GET', 'POST']
     }
 });
