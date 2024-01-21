@@ -8,9 +8,9 @@ function QuillEditor() {
   const { docId } = useParams();
   const [socket, setSocket] = useState(null);
   const [quill, setQuill] = useState(null);
-
+  const server = process.env.REACT_APP_SERVER;
   useEffect(() => {
-    const sk = io("http://localhost:3001");
+    const sk = io(server);
     setSocket(sk);
 
     return () => {
