@@ -1,5 +1,7 @@
+const dotEnv = require('dotenv');
+dotEnv.config();
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://127.0.0.1:27017/docs-clone")
+mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
     console.log("Mongoose connected");
 }).catch((e)=>{
