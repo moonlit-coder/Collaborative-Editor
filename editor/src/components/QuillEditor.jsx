@@ -56,17 +56,18 @@ function QuillEditor() {
 
   useEffect(() => {
     if (socket === null || quill === null) return;
-
+  
     const receiveChangesHandler = (delta) => {
       quill.updateContents(delta);
     };
-
+  
     socket.on("receive-changes", receiveChangesHandler);
-
+  
     return () => {
       socket.off("receive-changes", receiveChangesHandler);
     };
   }, [socket, quill]);
+  
 
   const toolbarOptions = [
     ["bold", "italic", "underline", "strike"], // toggled buttons

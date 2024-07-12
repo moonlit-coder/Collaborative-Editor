@@ -1,0 +1,14 @@
+{
+  "name": "collaborative-editor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
+    "build": "npm install --legacy-peer-deps --prefix server && npm install --legacy-peer-deps --prefix editor && npm run build --prefix editor"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

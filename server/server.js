@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 const io = require('socket.io')(3001,{
     cors:{
-        origin: 'https://editor-reiine.netlify.app',
+        origin: 'http://localhost:3000',
         methods: ['GET', 'POST']
     }
 });
@@ -15,9 +15,10 @@ const defaultText = "";
 io.on('connection', socket=>{
     socket.on("get-document", async docId=>{
         const doc = await findDoc(docId);
+        socket.join(docId);
         socket.emit("load-document", doc.text);
         socket.on("send-changes",delta=>{
-            socket.broadcast.to(docId).emit("receive-changes",delta);
+            socket.to(docId).emit("receive-changes",delta);
         })
         socket.on("save-document",async text =>{
             await document.findByIdAndUpdate(docId,{text:text});
