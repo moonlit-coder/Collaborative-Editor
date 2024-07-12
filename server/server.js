@@ -32,3 +32,8 @@ const findDoc = async (docId) => {
     if(doc ) return doc;
     return await document.create({_id:docId,text:defaultText});
 };
+
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => console.log(`Server running on port ${port}`));
